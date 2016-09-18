@@ -1,0 +1,39 @@
+{
+  "name": "postcss-slideshow",
+  "version": "0.0.0",
+  "description": "PostCSS plugin to create a pure CSS slideshow",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "slideshow"
+  ],
+  "author": "David Marchena <dvmarchena@gmail.com>",
+  "license": "MIT",
+  "repository": "dmarchena/postcss-slideshow",
+  "bugs": {
+    "url": "https://github.com/dmarchena/postcss-slideshow/issues"
+  },
+  "homepage": "https://github.com/dmarchena/postcss-slideshow",
+  "dependencies": {
+    "postcss": "^5.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
+    "coveralls": "^2.11.13",
+    "eslint": "^3.4.0",
+    "eslint-config-postcss": "^2.0.2",
+    "nyc": "^8.3.0",
+    "rimraf": "^2.5.4"
+  },
+  "scripts": {
+    "test": "ava && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5"
+  }
+}
