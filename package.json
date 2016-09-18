@@ -27,11 +27,30 @@
     "coveralls": "^2.11.13",
     "eslint": "^3.4.0",
     "eslint-config-postcss": "^2.0.2",
+    "npm-run-all": "^3.1.0",
     "nyc": "^8.3.0",
+    "postcss-value-parser": "^3.3.0",
     "rimraf": "^2.5.4"
   },
   "scripts": {
-    "test": "ava && eslint *.js"
+    "clean": "rimraf dist",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint *.js",
+    "test:ava": "ava src/__tests__/*.js",
+    "test": "nyc npm run test:ava",
+    "prebuild": "npm-run-all clean lint",
+    "build": "babel src --out-dir dist"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "ava": {
+    "require": "babel-register"
   },
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5"
