@@ -1,11 +1,14 @@
+function throwTypeError(type) {
+    throw new TypeError(`Param type error: ${type}. "rule" is needed.`);
+}
+
 export default function addSiblingRule(sibling) {
     return {
-        toRule: function(rule) {
-            if (rule.type && rule.type === 'rule') {
-                return rule.parent.append(sibling);
-            } else {
-                throw new Error(`Param type error: ${rule.type}. "rule" is needed.`);
+        toRule(rule) {
+            if (!rule.type || rule.type !== 'rule') {
+                throwTypeError(rule.type);
             }
+            return rule.parent.append(sibling);
         }
-    }
-};
+    };
+}

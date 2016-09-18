@@ -35,7 +35,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint *.js",
+    "lint": "eslint src/**/*.js",
+    "pretest": "npm run lint",
     "test:ava": "ava src/__tests__/*.js",
     "test": "nyc npm run test:ava",
     "prebuild": "npm-run-all clean lint",
@@ -53,6 +54,6 @@
     "require": "babel-register"
   },
   "eslintConfig": {
-    "extends": "eslint-config-postcss/es5"
+    "extends": "eslint-config-postcss"
   }
 }

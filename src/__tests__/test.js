@@ -10,11 +10,11 @@ function run(t, input, assertion, opts = { }) {
         });
 }
 
-function runDeepEqual(t, input, output) {
+/* function runDeepEqual(t, input, output) {
     return run(t, input, result => {
         t.deepEqual(result.css, output);
     });
-}
+}*/
 
 function runRegex(t, input, regex) {
     return run(t, input, result => {
