@@ -1,5 +1,4 @@
 import postcss from 'postcss';
-import test    from 'ava';
 import plugin  from '../';
 
 function run(t, input, assertion, opts = { }) {
@@ -10,20 +9,16 @@ function run(t, input, assertion, opts = { }) {
         });
 }
 
-/* function runDeepEqual(t, input, output) {
+function deepEqual(t, input, output) {
     return run(t, input, result => {
         t.deepEqual(result.css, output);
     });
-}*/
+}
 
-function runRegex(t, input, regex) {
+function regex(t, input, regexp) {
     return run(t, input, result => {
-        t.regex(result.css, regex);
+        t.regex(result.css, regexp);
     });
 }
 
-test('Recognizes display slideshow and inserts children\' basic style', t => {
-    return runRegex(t,
-        '.slideshow { display: slideshow; }',
-        /\.slideshow \{ display: block; \}\n\.slideshow > \* {[^\}]*}/);
-});
+export { deepEqual, regex };

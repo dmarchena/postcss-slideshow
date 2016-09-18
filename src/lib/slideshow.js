@@ -4,7 +4,9 @@ import addSiblingRule from './add-sibling-rule';
 function childrenBaseRule(parent) {
     return postcss.parse(
 `${parent.selector} > * {
-    display: inline;
+    display: block;
+    height: 100%;
+    width: 100%;
 }`);
 }
 

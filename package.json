@@ -37,7 +37,7 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/**/*.js",
     "pretest": "npm run lint",
-    "test:ava": "ava src/__tests__/*.js",
+    "test:ava": "ava",
     "test": "nyc npm run test:ava",
     "prebuild": "npm-run-all clean lint",
     "build": "babel src --out-dir dist"
@@ -51,7 +51,14 @@
     ]
   },
   "ava": {
-    "require": "babel-register"
+    "files": [
+      "src/__tests__/*.js",
+      "!**/postcss-test.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   },
   "eslintConfig": {
     "extends": "eslint-config-postcss"
