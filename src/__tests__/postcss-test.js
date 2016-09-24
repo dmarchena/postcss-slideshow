@@ -1,7 +1,7 @@
 import postcss from 'postcss';
 import plugin  from '../';
 
-function run(t, input, assertion, opts = { }) {
+function run(t, input, assertion, opts = {}) {
     return postcss([ plugin(opts) ]).process(input)
         .then(result => {
             assertion(result);
@@ -21,4 +21,11 @@ function regex(t, input, regexp) {
     });
 }
 
-export { deepEqual, regex };
+function warn(t, input, opts = {}) {
+    return postcss([ plugin(opts) ]).process(input)
+        .then(result => {
+            t.deepEqual(result.warnings().length, 1);
+        });
+}
+
+export { deepEqual, regex, warn };
